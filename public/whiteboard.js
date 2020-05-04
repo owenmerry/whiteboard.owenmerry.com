@@ -5,6 +5,8 @@
   var socket = io();
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
+  var clearButton = document.getElementsByClassName('clear-button')[0];
+  var userDisplay = document.getElementsByClassName('user-display')[0];
   var context = canvas.getContext('2d');
   var colorList = {
     green: '#2A9D8F',
@@ -35,7 +37,12 @@
     colors[i].addEventListener('click', onColorUpdate, false);
   }
 
+  clearButton.addEventListener('click', onClearClick, false);
+
+
   socket.on('drawing', onDrawingEvent);
+  socket.on('clear', onClearEvent);
+  socket.on('users', onUserEvent);
 
   window.addEventListener('resize', onResize, false);
   onResize();
@@ -62,6 +69,12 @@
       y1: y1 / h,
       color: color
     });
+  }
+
+  function clearBoard(data, emit) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (!emit) { return; }
+    socket.emit('clear', {user: 'owen'});
   }
 
   function onMouseDown(e){
@@ -101,9 +114,25 @@
   }
 
   function onDrawingEvent(data){
+    //console.log('run draw', data);
     var w = canvas.width;
     var h = canvas.height;
     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
+  }
+
+  function onClearEvent(data){
+   // console.log('run clear', data);
+    clearBoard(data,false);
+  }
+
+  function onUserEvent(data){
+    console.log(userDisplay);
+    userDisplay.innerHTML = data.userAmount;
+  }
+
+
+  function onClearClick(){
+    clearBoard({user: 'owen'},true);
   }
 
   // make the canvas fill its parent

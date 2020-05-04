@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     background-color: #264653;
+    font-family: 'Varela Round', sans-serif;
   }
   
   /**
@@ -52,6 +53,30 @@
   .color.black { background-color: #212121; }
   .color.white { background-color: #FFFCFA; }
 
+
+  .settings{
+    position: fixed;
+    bottom:10px;
+    right:10px;
+  }
+
+  .setting{
+    display: inline-block;
+    padding: 20px 23px;
+    border-radius:30px;
+    margin-right:3px;
+    color:#FFFCFA;
+    background-color: #2A9D8F;
+    font-size: 24px;
+  }
+
+  .clear-button{
+    cursor: pointer;
+  }
+
+  .user-display{
+
+  }
 
 
   @media only screen and (max-width: 600px) {
