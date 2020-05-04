@@ -1,0 +1,53 @@
+/**
+ * Fix user-agent
+ */
+
+ * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #264653;
+  }
+  
+  /**
+   * Canvas
+   */
+  
+  .whiteboard {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
+  
+  .colors {
+    position: fixed;
+    top:5px;
+    right:5px;
+  }
+  
+  .color {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius:50%;
+    cursor: pointer;
+    margin-right:3px;
+  }
+  
+  .color.blue { background-color: blue; }
+
+  .color.green { background-color: #2A9D8F; }
+  .color.yellow { background-color: #E9C46A; }
+  .color.orange { background-color: #F4A261; }
+  .color.red { background-color: #E76F51; }
+
+  .color.black { background-color: #212121; }
+  .color.white { background-color: #FFFCFA; }

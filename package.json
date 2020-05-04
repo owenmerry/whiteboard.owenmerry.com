@@ -1,7 +1,7 @@
 {
-    "name": "chat.owenmerry.com",
+    "name": "whiteboard.owenmerry.com",
     "version": "0.0.1",
-    "description": "my first socket.io app",
+    "description": "whiteboard drawing app",
     "dependencies": {
         "express": "^4.15.2",
         "socket.io": "^2.3.0"
