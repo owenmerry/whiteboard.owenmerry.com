@@ -97,6 +97,10 @@
   }
 
   function onColorUpdate(e){
+    for (var i = 0; i < colors.length; i++){
+      colors[i].classList.remove("color-selected");
+    }
+    e.target.classList.add("color-selected");
     current.color = e.target.className.split(' ')[1];
   }
 
