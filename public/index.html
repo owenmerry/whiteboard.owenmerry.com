@@ -4,28 +4,18 @@
   <meta charset="UTF-8">
   <title>Whiteboard on owenmerry.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/whiteboard.css">
+  <link rel="stylesheet" href="/home.css">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <canvas class="whiteboard" ></canvas>
-
-  <div class="colors">
-    <div class="color black color-selected"></div>
-    <div class="color white"></div>
-    <div class="color green"></div>
-    <div class="color yellow"></div>
-    <div class="color orange"></div>
-    <div class="color red"></div>
+  <div class="page">
+    <form id='myform' class='form'>
+      <h2>Join a room or create a room</h2>
+      <input class='chatInput' id='chatInput' type='text' maxlength="14" autocomplete="off" />
+    </form> 
   </div>
 
-  <div class="settings">
-    <div class='setting user-display'>0</div>
-    <div class='setting clear-button'>Clear</div>
-  </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/whiteboard.js"></script>
+  <script src="/home.js"></script>
 </body>
 </html>

@@ -40,6 +40,10 @@
   clearButton.addEventListener('click', onClearClick, false);
 
 
+  // room
+  socket.emit('room', {room: window.location.pathname});
+
+  // listeners
   socket.on('drawing', onDrawingEvent);
   socket.on('clear', onClearEvent);
   socket.on('users', onUserEvent);

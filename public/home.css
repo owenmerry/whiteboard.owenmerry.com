@@ -1,0 +1,67 @@
+/**
+ * Fix user-agent
+ */
+
+ * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #264653;
+    font-family: 'Varela Round', sans-serif;
+  }
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: transparent;
+    text-align: center;
+    color:white;
+  }
+
+  h2{
+    color:white;
+    font-size: 40px;
+  }
+
+  .page{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form {
+    height: 200px;
+    width:50%;
+    text-align: center;
+  }
+  
+  .form .chatInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 400px;
+    font-size: 30px;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .form {
+      height: auto;
+      width:100%;
+      text-align: center;
+    }
+  }
+
+
