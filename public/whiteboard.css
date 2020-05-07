@@ -60,6 +60,13 @@
 
   .color.black { background-color: #212121; }
   .color.white { background-color: #FFFCFA; }
+  .color.eraser { 
+    border: solid 5px #0000001f;
+    background-color: #264653;
+  }
+  .color.eraser.color-selected { 
+    border: solid 5px #FFFCFA;
+  }
 
 
   .settings{

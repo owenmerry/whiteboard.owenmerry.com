@@ -16,6 +16,7 @@
     red: '#E76F51',
     black: '#212121',
     white: '#FFFCFA',
+    eraser: '#264653',
   };
 
   var current = {
@@ -29,10 +30,10 @@
   canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
   
   //Touch support for mobile devices
-  canvas.addEventListener('touchstart', onMouseDown, false);
-  canvas.addEventListener('touchend', onMouseUp, false);
-  canvas.addEventListener('touchcancel', onMouseUp, false);
-  canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
+  canvas.addEventListener('touchstart', onMouseDown, {passive: true});
+  canvas.addEventListener('touchend', onMouseUp, {passive: true});
+  canvas.addEventListener('touchcancel', onMouseUp, {passive: true});
+  canvas.addEventListener('touchmove', throttle(onMouseMove, 10), {passive: true});
 
   for (var i = 0; i < colors.length; i++){
     colors[i].addEventListener('click', onColorUpdate, false);
@@ -48,8 +49,10 @@
   socket.on('drawing', onDrawingEvent);
   socket.on('clear', onClearEvent);
   socket.on('users', onUserEvent);
+  socket.on('history', onHistoryEvent);
+  socket.on('gethistory', onGetHistoryEvent);
 
-  window.addEventListener('resize', onResize, false);
+  window.addEventListener('resize', debounce(function(e){onResize()}), false);
   onResize();
 
 
@@ -123,20 +126,33 @@
   }
 
   function onDrawingEvent(data){
-    //console.log('run draw', data);
     var w = canvas.width;
     var h = canvas.height;
     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
   }
 
   function onClearEvent(data){
-   // console.log('run clear', data);
     clearBoard(data,false);
   }
 
   function onUserEvent(data){
-    //console.log('test data', test);
     userNumber.innerHTML = data.userAmount;
+  }
+
+  function onGetHistoryEvent(data){
+    setupDrawing(data.list);
+  }
+
+  function onHistoryEvent(data){
+    setupDrawing(data.list);
+  }
+
+  function setupDrawing (list){
+    var w = canvas.width;
+    var h = canvas.height;
+    list.forEach((data) => {
+      drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
+    });
   }
 
 
@@ -148,6 +164,15 @@
   function onResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    socket.emit('gethistory', {data: 'data'});
+  }
+
+  function debounce(func){
+    var timer;
+    return function(event){
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(func,100,event);
+    };
   }
 
 })();

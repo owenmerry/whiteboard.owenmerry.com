@@ -19,11 +19,10 @@
     //validate 
     if (encodeURI(chatInput.value) === ''){
       showError();
-      console.log('eneded up in here', encodeURI(chatInput.value) !== '');
       return false;
     }
 
-    const website = window.location.href + 'room/' + encodeURI(chatInput.value);
+    const website = window.location.href.split('?')[0] + 'room/' + encodeURI(chatInput.value.toLowerCase());
     window.location.href = website;
   }
   
