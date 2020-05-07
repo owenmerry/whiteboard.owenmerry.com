@@ -164,7 +164,7 @@
   function onResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    socket.emit('gethistory', {data: 'data'});
+    //socket.emit('gethistory', {data: 'data'});
   }
 
   function debounce(func){
