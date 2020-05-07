@@ -49,8 +49,10 @@
   socket.on('drawing', onDrawingEvent);
   socket.on('clear', onClearEvent);
   socket.on('users', onUserEvent);
+  socket.on('history', onHistoryEvent);
+  socket.on('gethistory', onGetHistoryEvent);
 
-  window.addEventListener('resize', onResize , false);
+  window.addEventListener('resize', debounce(function(e){onResize()}), false);
   onResize();
 
 
@@ -137,17 +139,21 @@
     userNumber.innerHTML = data.userAmount;
   }
 
-  // function onHistoryEvent(data){
-  //   setupDrawing(data.list);
-  // }
+  function onGetHistoryEvent(data){
+    setupDrawing(data.list);
+  }
 
-  // function setupDrawing (list){
-  //   var w = canvas.width;
-  //   var h = canvas.height;
-  //   list.forEach((data) => {
-  //     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
-  //   });
-  // }
+  function onHistoryEvent(data){
+    setupDrawing(data.list);
+  }
+
+  function setupDrawing (list){
+    var w = canvas.width;
+    var h = canvas.height;
+    list.forEach((data) => {
+      drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
+    });
+  }
 
 
   function onClearClick(){
@@ -158,6 +164,15 @@
   function onResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    socket.emit('gethistory', {data: 'data'});
+  }
+
+  function debounce(func){
+    var timer;
+    return function(event){
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(func,100,event);
+    };
   }
 
 })();
