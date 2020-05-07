@@ -43,7 +43,7 @@ function onConnection(socket){
   socket.on('drawing', (data) => {
     socket.broadcast.to(socket.room).emit('drawing', data);
     if(history[socket.room]){
-      history[socket.room].push(data);
+      //history[socket.room].push(data);
     }
   });
   socket.on('clear', (data) => {
