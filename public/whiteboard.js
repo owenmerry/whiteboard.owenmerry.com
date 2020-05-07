@@ -7,6 +7,7 @@
   var colors = document.getElementsByClassName('color');
   var clearButton = document.getElementsByClassName('clear-button')[0];
   var userDisplay = document.getElementsByClassName('user-display')[0];
+  var userNumber = document.getElementsByClassName('user-number')[0];
   var context = canvas.getContext('2d');
   var colorList = {
     green: '#2A9D8F',
@@ -41,7 +42,7 @@
 
 
   // room
-  socket.emit('room', {room: window.location.pathname});
+  socket.emit('room', {room: window.location.pathname.toLowerCase()});
 
   // listeners
   socket.on('drawing', onDrawingEvent);
@@ -134,8 +135,8 @@
   }
 
   function onUserEvent(data){
-    console.log(userDisplay);
-    userDisplay.innerHTML = data.userAmount;
+    //console.log('test data', test);
+    userNumber.innerHTML = data.userAmount;
   }
 
 

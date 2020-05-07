@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59340722-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-59340722-3');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Whiteboard on owenmerry.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/home.css">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="page">
+    <form id='myform' class='form'>
+      <div class='logo'>whiteboard.owenmerry.com</div>
+      <h2>Play pictionary online with friends or family.</h2>
+      <p>To create a new game or join an existing game, enter a game name and click 'Join Game'.</p>
+      <div id='error' class='error error-hide'>Please type in a game name to join or any name to create a game</div>
+      <input class='chatInput' id='chatInput' type='text' maxlength="14" autocomplete="off" />
+      <button>Join Game</button>
+    </form> 
+  </div>
+
+  <script src="/home.js"></script>
+</body>
+</html>

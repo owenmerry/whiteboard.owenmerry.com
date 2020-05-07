@@ -83,10 +83,6 @@
     cursor: pointer;
   }
 
-  .user-display{
-
-  }
-
 
   @media only screen and (max-width: 600px) {
     .color {
@@ -94,6 +90,10 @@
       height: 40px;
       width: 40px;
       margin-right:3px;
+    }
+    .setting{
+      padding: 12px 16px;
+      font-size: 18px;
     }
   }
 

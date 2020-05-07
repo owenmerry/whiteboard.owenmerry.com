@@ -25,9 +25,36 @@
     color:white;
   }
 
+  .logo{
+    font-size: 16px;
+    color:#366171;
+    margin-bottom:10px;
+  }
+
   h2{
     color:white;
     font-size: 40px;
+    margin-top:0px;
+  }
+
+  p{
+    color:white;
+    line-height:24px;
+  }
+
+  button{
+    margin-top:10px;
+    background-color: #2A9D8F;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 5px 10px #0000001f;
   }
 
   .page{
@@ -39,28 +66,43 @@
   }
 
   .form {
-    height: 200px;
     width:50%;
     text-align: center;
+    max-width: 500px;
   }
   
-  .form .chatInput {
+  .chatInput {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #fff;
+    border: 2px solid #366171;
+    border-radius: 20px;
     outline: none;
     padding-bottom: 15px;
     text-align: center;
     width: 400px;
     font-size: 30px;
   }
+  .chatInput.error-input{
+    border-color:#E76F51;
+  }
+
+  .error{
+    color: #E76F51;
+    margin-bottom: 20px; 
+  }
+  .error-hide{
+    display: none;
+  }
 
 
   @media only screen and (max-width: 600px) {
     .form {
       height: auto;
-      width:100%;
+      width:80%;
       text-align: center;
+    }
+    .form .chatInput {
+      width:100%;
     }
   }
 
